@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 var httpcontent = `HTTP/1.1 200 OK
@@ -119,6 +120,7 @@ func main() {
 		buf := make([]byte, 8192)
 		for {
 			if conn_proxy == nil {
+				time.Sleep(time.Millisecond * 10)
 				continue
 			}
 			len, err := conn_proxy.Read(buf)
